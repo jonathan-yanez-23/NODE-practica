@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Product = require("./models/Product");
-
+const User = require("./models/User");
 // Crear datos de los productos
 const products = [
     {
@@ -154,8 +154,18 @@ const products = [
         image :"https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Logan_Sapphire_SI.jpg/375px-Logan_Sapphire_SI.jpg"
     }
 ];
+const users = [
+    {
+        email: "edward.white@commerce.admin.com",
+        password: "$2b$10$2KR3VxFLNfyGeZBdJz5X7uFJf1vSQvHAWX383l3kHUcSfEKhAyyyO" //12345x
+    },
+    {
+        email: "exampleuser@mail.com",
+        password: "$2b$10$Ms/orY8QPgDpcFzQM8dYBOQEprjOdYW0xPTWe.fDaB0wW.qyix7Zi" 
+    }
+];
 const productDocuments = products.map(product => new Product(product))
-
+const userDocuments = users.map(user => new User(user));
 // CONEXION
 mongoose
 .connect("mongodb://localhost:27017/ecommerce-indra", {
@@ -168,10 +178,16 @@ mongoose
     if(allProducts.length){
         await Product.collection.drop();
     }
+
+    const allUsers = await User.find();
+    if(allUsers.length){
+        await User.collection.drop();
+    }
 })
 .catch((err) => console.log("Error in deleting data: "+err))
 .then(async () => {
     await Product.insertMany(productDocuments);
+    await User.insertMany(userDocuments);
 })
 .catch((err) => console.log("Error in creating data: "+err))
 .finally(() => mongoose.disconnect());
