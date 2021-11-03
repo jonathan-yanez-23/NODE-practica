@@ -10,6 +10,14 @@
 </head>
 <body>
     <h1>PRODUCTOS</h1>
+    <div class="options">
+        
+        <span>
+            <form action="users/logout" method="post">
+            <button type="submit">LOGOUT</button>
+            </form>
+        </span>
+    </div>
     {{#each products}}
     <div class="productbox">
         <h3>{{ uppercase this.name}}</h3>

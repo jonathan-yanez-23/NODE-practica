@@ -42,4 +42,21 @@ router.post('/register', (req, res, next) => {
 });
 
 
+router.post("/logout", (req, res, next) => {
+    if(req.user){
+        // Se destruye el objeto req.user para el usuario
+        req.logout();
+        req.session.destroy(() => {
+            // Eliminar cookie de sesión al cancelar la sesion
+            res.clearCookie("connect.sid");
+            // redirijimos a usuario a la home
+            res.redirect("/");
+        });
+    } else {
+        return res.sendStatus(304); // Si no hay usuario, no habremos cambiado nada
+    }
+});
+
+
+
 module.exports = router;
