@@ -1,7 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
-
+const User = require("../models/User");
 
 router.post('/login', (req, res, next) => {
     passport.authenticate('login', (error, user) => {
@@ -56,6 +56,46 @@ router.post("/logout", (req, res, next) => {
         return res.sendStatus(304); // Si no hay usuario, no habremos cambiado nada
     }
 });
+
+router.put("/add-to-cart", async (req, res, next)=>{
+    try{
+        const productId = req.body.productId;
+        const userId = req.body.userId;
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            {
+                $push: {"cart": productId}
+            },
+            {new: true}
+        );
+        return res.status(200).json(updatedUser);
+    }catch(err){
+        next(err);
+    }
+}); 
+
+router.put("/add-to-cartt", async (req, res, next)=>{
+    try{
+        if(req.user){
+            productId = user._id;
+        } else {
+            return res.status(500).render("error", {message: "No has iniciado la sesion, por tanto no puedes agregar productos"});
+        }
+        const productId = req.body.productId;
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            {
+                $push: {"cart": productId}
+            },
+            {new: true}
+        );
+        return res.status(200).json(updatedUser);
+    }catch(err){
+        next(err);
+    }
+}); 
+
+
 
 
 
