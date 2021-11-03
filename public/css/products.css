@@ -1,0 +1,16 @@
+.productbox{
+    background-color: lightgreen;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+p{
+    background-color: lightpink;
+    margin: 10px
+}
+
+img{
+    margin: 10px
+}

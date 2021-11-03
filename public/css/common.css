@@ -1,0 +1,15 @@
+body{
+    font-family: sans-serif;
+}
+h1{
+    background-color: lightsalmon;
+}
+
+h2{
+    background-color: lightgreen;
+}
+
+img{
+    width: 150px;
+    height: auto
+}

@@ -12,9 +12,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.6.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^6.0.12"
+    "express-session": "^1.17.2",
+    "hbs": "^4.1.2",
+    "mongoose": "^6.0.12",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^8.1.0",
@@ -22,7 +28,7 @@
     "husky": "^7.0.4",
     "nodemon": "^2.0.14"
   },
-  "husky":{
+  "husky": {
     "*.js": [
       "prettier --write",
       "eslint"

@@ -1,0 +1,10 @@
+.options{
+    display: flex;
+    justify-content: center;
+}
+.options span{
+    background-color: lightpink;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
