@@ -65,6 +65,10 @@ hbs.registerHelper("uppercase", (str) => {
     return str.toUpperCase();
 });
 
+hbs.registerHelper("stringify", (object)=>{
+    return JSON.stringify(object);
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

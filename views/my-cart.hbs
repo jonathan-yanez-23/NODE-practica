@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My cart</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/products.css">
+</head>
+<body>
+    <h1>MIS COMPRAS</h1>
+    <div class="options">
+        
+        <span>
+            <form action="../users/logout" method="post">
+            <button type="submit">LOGOUT</button>
+            </form>
+        </span>
+        <span><a href="../products">PRODUCTOS</a></span>
+        <span><a href="../users/my-cart">MIS COMPRAS</a></span>
+        
+    </div>
+    <div class="allproducts">
+        {{#each cart}}
+    <div class="productbox" id="{{this}}">
+        <span><b>ID: </b>{{this}}</span>
+    </div>
+    {{/each}}
+    </div>
+
+
+</body>
+</html>

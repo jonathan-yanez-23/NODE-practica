@@ -18,13 +18,14 @@
             <button type="submit">LOGOUT</button>
             </form>
         </span>
+        <span><a href="/products">PRODUCTOS</a></span>
+        <span><a href="/users/my-cart">MIS COMPRAS</a></span>
     </div>
     <div class="allproducts">
         {{#each products}}
     <div class="productbox" id="{{this.id}}">
         <button>add to cart</button>
         <h3>{{ uppercase this.name}}</h3>
-        <button>Agregar al carrito</button>
         <p>{{this.description}}</p>
         <span>PRECIO: </span><span>{{this.price}} Euros</span><br>
         <img src="{{this.image}}" alt="Imagen del producto">
