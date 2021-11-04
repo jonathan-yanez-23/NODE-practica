@@ -56,23 +56,6 @@ router.post("/logout", (req, res, next) => {
     }
 });
 
-router.put("/add-to-cartt", async (req, res, next)=>{
-    try{
-        const productId = req.body.productId;
-        const userId = req.body.userId;
-        const updatedUser = await User.findByIdAndUpdate(
-            userId,
-            {
-                $push: {"cart": productId}
-            },
-            {new: true}
-        );
-        return res.status(200).json(updatedUser);
-    }catch(err){
-        next(err);
-    }
-}); 
-
 router.put("/add-to-cart", async (req, res, next)=>{
     try{
         if(req.session.passport){
