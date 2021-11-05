@@ -3,6 +3,10 @@ const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
 
+
+// Middleware propio para algunos endpoint que requieren usuarios autenticados
+const authMiddleware = require("../middlewares/auth.middleware");
+
 router.post('/login', (req, res, next) => {
     passport.authenticate('login', (error, user) => {
         if (error) {
@@ -35,7 +39,7 @@ router.post('/register', (req, res, next) => {
 });
 
 
-router.post("/logout", (req, res, next) => {
+router.post("/logout", [authMiddleware.isAuthenticated], (req, res, next) => {
     if(req.user){
         // Se destruye el objeto req.user para el usuario
         req.logout();
@@ -56,7 +60,7 @@ router.post("/logout", (req, res, next) => {
  * Recibe por post la id del producto.
  * Problema: hay que comprobar si dicho producto con dicha id existe en la base de datos
  */
-router.put("/add-to-cart", async (req, res, next)=>{
+router.put("/add-to-cart",[authMiddleware.isAuthenticated], async (req, res, next)=>{
     try{
         if(req.session.passport){
             const userId = req.session.passport.user;
@@ -78,7 +82,7 @@ router.put("/add-to-cart", async (req, res, next)=>{
 }); 
 
 
-router.get("/my-cart", async (req, res, next) => {
+router.get("/my-cart", [authMiddleware.isAuthenticated], async (req, res, next) => {
     try {
         if(req.session.passport){
             const userId = req.session.passport.user;

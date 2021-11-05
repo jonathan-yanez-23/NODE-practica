@@ -91,7 +91,6 @@ passport.use(
 
 // Funcion que usar el usuario de req.login para registrar su id en la cookie de sesion
 passport.serializeUser((user, done)=>{
-    console.log(user._id)
     return done(null, user._id); 
 });
 
