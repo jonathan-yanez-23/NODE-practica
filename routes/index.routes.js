@@ -11,10 +11,9 @@ router.get("/", async(req, res, next) => {
     }
 });
 
-router.get("/products", async (req, res, next) => {
+router.get("/allproducts", async (req, res, next) => {
     try {
-        const products = await Product.find();
-        res.status(200).render("products", {products})
+        res.status(200).render("allproducts", {title: "Los productos"})
     } catch (err) {
         next(err);
     }
@@ -23,6 +22,7 @@ router.get("/products", async (req, res, next) => {
 router.get("/login", (req, res, next) => {
     res.render("login");
 });
+
 
 router.get("/register", (req, res, next) => {
     res.render("register");

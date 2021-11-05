@@ -18,6 +18,7 @@ app.use(express.urlencoded({extended: false}));
 //RUTAS
 indexRoutes = require("./routes/index.routes");
 userRoutes = require("./routes/users.routes");
+productRoutes = require("./routes/products.routes");
 
 // Inicializar passport y la sesion
 app.use(
@@ -37,6 +38,7 @@ app.use(passport.session()); // middleware que agrega sesiones a los usuarios
 //AGREGAR ROUTES
 app.use("/", indexRoutes);
 app.use("/users", userRoutes);
+app.use("/products", productRoutes);
 
 //ruta static para usar la carpeta publicp
 app.use("/static", express.static("public"));

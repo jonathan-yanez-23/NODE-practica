@@ -14,12 +14,12 @@
     <div class="options">
         
         <span>
-            <form action="users/logout" method="post">
+            <form action="/users/logout" method="post">
             <button type="submit">LOGOUT</button>
             </form>
         </span>
-        <span><a href="/products">PRODUCTOS</a></span>
-        <span><a href="/users/my-cart">MIS COMPRAS</a></span>
+        <span><a href="/allproducts">PRODUCTOS</a></span>
+        <span><a href="/my-cart">MIS COMPRAS</a></span>
     </div>
     <div class="allproducts">
         {{#each products}}
